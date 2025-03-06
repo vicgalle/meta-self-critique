@@ -7,7 +7,6 @@ import json
 import openai
 import tqdm
 from datasets import load_dataset
-from templates import jailbreak_templates_revised
 
 
 def generate_openai(
@@ -85,7 +84,8 @@ def main():
     eval_prompts = dataset["test"]["text"]
 
     # Repeat the jailbreak templates to ensure enough templates are available.
-    jailbreak_templates = jailbreak_templates_revised * 100
+    from templates import jailbreak_templates
+    jailbreak_templates = jailbreak_templates * 100
 
     # --------------------- API Configuration ---------------------
     # Primary model configuration for generating responses.
